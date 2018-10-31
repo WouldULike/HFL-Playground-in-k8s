@@ -67,6 +67,14 @@ worker1      Ready     <none>    35s       v1.11.0
 worker2      Ready     <none>    34s       v1.11.0
 ```
 
+### Deploy Hyperledger Fabric in Kubernetes
+```
+$ make setupHLF
+```
+```
+$ make deployHLF
+```
+
 ### Tear down cluster
 ```
 $ make clean
