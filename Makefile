@@ -10,3 +10,5 @@ deployHLF :
 		ansible-playbook ./playbook/hyperledger/playbook.deployHLFNetwork.yml -i inventory.ini
 deleteHLF :
 		ansible-playbook ./playbook/hyperledger/playbook.deleteHLFNetwork.yml -i inventory.ini
+setupDB :
+		ansible-playbook ./playbook/mysql/playbook.setupDB.yml -i inventory.ini

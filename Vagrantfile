@@ -11,7 +11,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     kubemaster.vm.network "private_network", ip: "192.168.99.20"
     kubemaster.vm.provision "shell", path: "provision.sh"
     
-    kubemaster.vm.provision "file", source: "./scripts", destination: "$HOME/scripts"
+    # kubemaster.vm.provision "file", source: "./scripts", destination: "$HOME/scripts"
+    kubemaster.vm.synced_folder "sync_dir", "/home/vagrant/scripts"
     kubemaster.vm.provider "virtualbox" do |vb|
       vb.memory = "3096"
       vb.cpus = 2
@@ -38,5 +39,23 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         vb.cpus = 2
       end
     end
+
+
+  config.vm.define "db" do |db|
+    db.vm.hostname = "db"
+    db.vm.box = "ubuntu/bionic64"
+    db.vm.network "private_network", ip: "192.168.99.10"
+    db.vm.provision "shell", path: "provision.sh"
+    
+    db.vm.synced_folder "sync_dir/db", "/home/vagrant/sync_dir"
+    db.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+      vb.cpus = 2
+    end
+    
+  end
+
+
+
   end
 end

@@ -4,3 +4,5 @@ roles/*
 *.log
 *.retry
 .vscode
+scripts/Chaining
+sync_dir/Fabric-on-K8S
